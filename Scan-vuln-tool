@@ -1,0 +1,80 @@
+#!/bin/bash
+
+echo "Ingrese el objetivo del escaneo (IP o dominio):"
+read objetivo
+
+echo "Ingrese el nombre del archivo de salida:"
+read archivo_salida
+
+echo "Ingrese la ruta al archivo del logo:"
+read logo
+
+echo "Ingrese el título del reporte:"
+read titulo
+
+echo "Escaneando $objetivo..."
+
+nmap -sS -A -T4 -p- -oX resultados.xml $objetivo
+xsltproc resultados.xml -o resultados.html
+
+echo "Generando reporte PDF..."
+
+echo "<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {background-color: #f2f2f2;}
+
+        h1 {
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+<div style='text-align:center'>
+    <img src='$logo' alt='Logo' width='200'>
+    <h1>$titulo</h1>
+</div>
+<h2>Escaneo de puertos</h2>
+<table>
+<tr>
+    <th>IP</th>
+    <th>Puertos abiertos</th>
+    <th>Servicios</th>
+</tr>" > resultados.html.tmp
+
+nmap -sS -A -T4 -p- -oG - $objetivo | awk '/^Host/{printf "<tr><td>%s</td>",$2} /^Ports:/{gsub(/\//,"",$4);printf "<td>%s</td><td>%s</td></tr>\n",$4,$5}' >> resultados.html.tmp
+
+echo "</table>
+<h2>Escaneo de vulnerabilidades</h2>
+<pre>" >> resultados.html.tmp
+
+nmap -sS -A -T4 --script=vuln -p- $objetivo >> resultados.html.tmp
+
+echo "</pre>
+</body>
+</html>" >> resultados.html.tmp
+
+wkhtmltopdf resultados.html.tmp $archivo_salida
+
+echo "Reporte generado en $archivo_salida"
