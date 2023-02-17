@@ -6,29 +6,39 @@ Este script está diseñado para ser utilizado solo para multas éticas y con el
 
 # Requisitos
 Este script requiere que Nmap esté instalado en su sistema. Si no tiene Nmap instalado, puede hacerlo en Kali Linux con el siguiente comando:
-
+'''
 sudo apt install nmap
-
+'''
 Además, el script también utiliza las siguientes herramientas para el escaneo de vulnerabilidades y la evasión de firewalls y WAF:
 
+'''
 Nikto
+
 wafw00f
+
 Unicornscan
 
+'''
+
 Puede instalar estas herramientas en Kali Linux con los siguientes comandos:
-
+'''
 sudo apt install nikto
+
 sudo apt install wafw00f
+
 sudo apt install unicornscan
+'''
+
 Finalmente, el script utiliza la herramienta wkhtmltopdfpara generar el informe en formato PDF. Puede instalar esta herramienta en Kali Linux con el siguiente comando:
-
+'''
 sudo apt install wkhtmltopdf
-
+'''
 # Uso
 Para utilizar el script, simplemente descárguelo y déjelos permisos de ejecución:
 
-
+'''
 chmod +x nmap_scan.sh
+'''
 Luego, puede ejecutar el script con el siguiente comando:
 
 ./nmap_scan.sh [opciones]
