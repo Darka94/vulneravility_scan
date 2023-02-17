@@ -4,7 +4,7 @@ Este es un script de Bash que utiliza la herramienta de escaneo de puertos Nmap 
 
 Este script está diseñado para ser utilizado solo para multas éticas y con el permiso de los propietarios de los activos. El uso inapropiado de este script puede ser ilegal.
 
-#Requisitos
+# Requisitos
 Este script requiere que Nmap esté instalado en su sistema. Si no tiene Nmap instalado, puede hacerlo en Kali Linux con el siguiente comando:
 
 sudo apt install nmap
@@ -22,9 +22,9 @@ sudo apt install wafw00f
 sudo apt install unicornscan
 Finalmente, el script utiliza la herramienta wkhtmltopdfpara generar el informe en formato PDF. Puede instalar esta herramienta en Kali Linux con el siguiente comando:
 
-
 sudo apt install wkhtmltopdf
-uso
+
+# Uso
 Para utilizar el script, simplemente descárguelo y déjelos permisos de ejecución:
 
 
@@ -49,7 +49,7 @@ Para un escaneo completo de un dominio web, puede utilizar el siguiente comando:
 
 ./nmap_scan.sh -d www.example.com -o informe.pdf -t "Informe de Seguridad" -l /ruta/al/logo.png
 
-#Resultado 
+# Resultado 
 Una vez que se complete el escaneo y se genere el archivo de informe en formato PDF, podrá encontrar el archivo en la ruta especificada en la variable OUTPUT_FILE. El informe contendrá información detallada sobre todos los hosts activos, puertos abiertos, servicios que se ejecutan en ellos y cualquier posible vulnerabilidad detectada.
 
 Es importante tener en cuenta que este script está destinado a ser utilizado solo con fines éticos y con el permiso de los propietarios de los activos. Además, no garantizo que el script pueda evadir todos los firewalls y WAF, por lo que es responsabilidad del usuario asegurarse de que esté utilizando el script de manera responsable y de acuerdo con las leyes y regulaciones locales.
