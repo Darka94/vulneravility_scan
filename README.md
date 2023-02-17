@@ -44,11 +44,17 @@ Luego, puede ejecutar el script con el siguiente comando:
 ./nmap_scan.sh [opciones]
 Las opciones disponibles son las siguientes:
 
+
 -h: Muestra la ayuda y las opciones disponibles.
+
 -s <dirección_IP/máscara>: Especifica el segmento de rojo a escanear. Por ejemplo: -s 192.168.1.0/24.
+
 -d <dominio>: Especifica el dominio web a escanear. Por ejemplo: -d www.example.com.
+
 -o <nombre_archivo>: Especifica el nombre del archivo de salida en formato PDF. Por ejemplo: -o informe.pdf.
+
 -t <título>: Especifica el título del informe en el archivo PDF. Por ejemplo: -t "Informe de Seguridad".
+
 -l <ruta_logo>: Especifica la ruta del archivo de imagen a incluir como logo en el informe PDF. Por ejemplo: -l /ruta/al/logo.png.
 
 Para un escaneo completo de un segmento de red, puede utilizar el siguiente comando:
